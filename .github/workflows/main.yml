@@ -1,5 +1,6 @@
 name: Check site and update RSS
-
+permissions:
+  contents: write   
 on:
   schedule:
     - cron: '*/5 * * * *'
