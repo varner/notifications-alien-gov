@@ -17,7 +17,7 @@ jobs:
       - name: Check website status
         id: check
         run: |
-          STATUS=$(curl -o /dev/null -s -w "%{http_code}" https://your-site.com)
+          STATUS=$(curl -o /dev/null -s -w "%{http_code}" https://aliens.gov)
           echo "status=$STATUS" >> $GITHUB_OUTPUT
 
       - name: Update RSS feed if site is up
