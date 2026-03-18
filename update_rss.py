@@ -32,10 +32,14 @@ def add_item(tree, status):
     items = channel.findall("item")
     for old in items[:-50]:
         channel.remove(old)
-
-tree = load_or_create_feed()
 status_code = os.environ.get("STATUS_CODE", "unknown")
-add_item(tree, status_code)
-ET.indent(tree, space="  ")
-tree.write(FEED_FILE, encoding="unicode", xml_declaration=True)
-print("feed.xml updated.")
+
+if status_code != "unknown" and int(status_code) != 0:
+    tree = load_or_create_feed()
+    add_item(tree, status_code)
+    ET.indent(tree, space="  ")
+    tree.write(FEED_FILE, encoding="unicode", xml_declaration=True)
+    print("updated rss feed")
+else:
+    print("nothing...")
+    print("feed.xml updated.")
